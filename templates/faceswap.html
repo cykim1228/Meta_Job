@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!----======== CSS ======== -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!----===== Boxicons CSS ===== -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+  <!--<title>Dashboard Sidebar Menu</title>-->
+</head>
+
+<body>
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="../static/images/mtvs_logo.png" alt="">
+        </span>
+
+        <div class="text logo-text">
+          <span class="name">METAJOB</span>
+          <span class="profession">취업도우미</span>
+        </div>
+      </div>
+
+      <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+
+<!--        <li class="search-box">-->
+<!--          <i class='bx bx-search icon'></i>-->
+<!--          <input type="text" placeholder="Search Ganes...">-->
+<!--        </li>-->
+
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="/">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">홈</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="/faceswap">
+              <i class='bx bx-photo-album icon'></i>
+              <span class="text nav-text">사진 합성</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-id-card icon'></i>
+              <span class="text nav-text">이력서 평가 (예정)</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-bar-chart-square icon'></i>
+              <span class="text nav-text">합격자 스펙 (예정)</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-meh-blank icon'></i>
+              <span class="text nav-text">AI 면접 (예정)</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="bottom-content">
+        <li class="">
+          <a href="#">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">로그인 없는 로그아웃</span>
+          </a>
+        </li>
+
+        <li class="mode">
+          <div class="sun-moon">
+            <i class='bx bx-moon icon moon'></i>
+            <i class='bx bx-sun icon sun'></i>
+          </div>
+          <span class="mode-text text">다크 모드</span>
+
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+
+      </div>
+    </div>
+
+  </nav>
+
+  <section class="home">
+    <div class="text">
+        <h1>사진 합성</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="manImages">합성할 사진을 선택해주세요 : </label>
+        <br>
+        <select id="manImages" name="manImage">
+            <option value="man_1.jpg">남성 1</option>
+            <option value="man_2.jpg">남성 2</option>
+            <option value="man_3.jpg">남성 3</option>
+            <option value="man_4.jpg">남성 4</option>
+            <option value="man_5.jpg">남성 5</option>
+            <option value="woman_1.jpg">여성 1</option>
+            <option value="woman_2.jpg">여성 2</option>
+            <option value="woman_3.jpg">여성 3</option>
+            <option value="woman_4.jpg">여성 4</option>
+            <option value="woman_5.jpg">여성 5</option>
+        </select>
+        <br>
+        <br>
+        <div id="manPreview">
+            <img src="../static/images/man_1.jpg" alt="Man Preview" width="200">
+        </div>
+        <br>
+        <label for="faceImage">그대의 사진을 올려주세요 : </label>
+        <div class="filebox">
+            <input type="file" id="faceImage" name="faceImage" accept="image/*" required>
+        </div>
+        <br>
+        <div id="facePreview">
+            <img src="" alt="Face Preview" width="200" style="display:none;">
+        </div>
+        <button type="button" onclick="submitForm()">합성하기!</button>
+    </form>
+    </div>
+  </section>
+
+  <script>
+    const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      // searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+    toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("close");
+    })
+    // searchBtn.addEventListener("click", () => {
+    //   sidebar.classList.remove("close");
+    // })
+    modeSwitch.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      if (body.classList.contains("dark")) {
+        modeText.innerText = "라이트 모드";
+      } else {
+        modeText.innerText = "다크 모드";
+      }
+    });
+
+    document.getElementById('manImages').addEventListener('change', function() {
+        const imageName = this.value;
+        const preview = document.getElementById('manPreview');
+        preview.querySelector('img').src = '{{ url_for('static', filename='images/') }}' + imageName;
+        preview.querySelector('img').style.display = 'block';
+    });
+
+    document.getElementById('faceImage').addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('facePreview');
+                preview.querySelector('img').src = e.target.result;
+                preview.querySelector('img').style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    function submitForm() {
+        const form = document.getElementById('uploadForm');
+        const formData = new FormData(form);
+        fetch('/faceswap', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = response.url;
+            } else {
+                return response.json();
+            }
+        })
+        .then(data => {
+            if (data) {
+                console.log('Error:', data);
+                alert('Face swap failed!');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Face swap failed!');
+        });
+    }
+
+  </script>
+
+</body>
+
+</html>
