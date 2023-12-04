@@ -7,7 +7,7 @@ from gfpgan_model import gfpgan_gogo
 app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['MAN_IMAGES_FOLDER'] = 'static\images'
+app.config['MAN_IMAGES_FOLDER'] = 'static/images'
 app.config['RESULT_FOLDER'] = 'results'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 
@@ -45,6 +45,7 @@ def faceswap_route():
 
         success, message = faceswap(man_image_path, face_image_path, result_path)
         if success:
+            print("Success")
             # GFPGAN 후처리
             gfpgan_result_filename = f"gfpgan_{result_filename}"
             gfpgan_result_path = os.path.join('results', gfpgan_result_filename)
@@ -62,6 +63,10 @@ def faceswap_result():
 @app.route('/results/<filename>')
 def results(filename):
     return send_from_directory('results', filename)
+
+@app.route('/interview')
+def interview_page():
+    return render_template('interview.html')
 
 if __name__ == "__main__":
     app.run('0.0.0.0', port=7777, debug=True)

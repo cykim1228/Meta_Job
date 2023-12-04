@@ -3,139 +3,139 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!----======== CSS ======== -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-  <!----===== Boxicons CSS ===== -->
-  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
-  <!--<title>Dashboard Sidebar Menu</title>-->
+    <title>METAJOB</title>
 </head>
 
 <body>
-  <nav class="sidebar close">
+<nav class="sidebar open">
     <header>
-      <div class="image-text">
+        <div class="image-text">
         <span class="image">
           <img src="../static/images/mtvs_logo.png" alt="">
         </span>
 
-        <div class="text logo-text">
-          <span class="name">METAJOB</span>
-          <span class="profession">취업도우미</span>
+            <div class="text logo-text">
+                <span class="name">METAJOB</span>
+                <span class="profession">취업도우미</span>
+            </div>
         </div>
-      </div>
 
-      <i class='bx bx-chevron-right toggle'></i>
+        <i class='bx bx-chevron-right toggle'></i>
     </header>
 
     <div class="menu-bar">
-      <div class="menu">
+        <div class="menu">
 
-<!--        <li class="search-box">-->
-<!--          <i class='bx bx-search icon'></i>-->
-<!--          <input type="text" placeholder="Search Ganes...">-->
-<!--        </li>-->
+            <!--        <li class="search-box">-->
+            <!--          <i class='bx bx-search icon'></i>-->
+            <!--          <input type="text" placeholder="Search Ganes...">-->
+            <!--        </li>-->
 
-        <ul class="menu-links">
-          <li class="nav-link">
-            <a href="/">
-              <i class='bx bx-home-alt icon'></i>
-              <span class="text nav-text">홈</span>
-            </a>
-          </li>
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="/">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">홈</span>
+                    </a>
+                </li>
 
-          <li class="nav-link">
-            <a href="/faceswap">
-              <i class='bx bx-photo-album icon'></i>
-              <span class="text nav-text">사진 합성</span>
-            </a>
-          </li>
+                <li class="nav-link">
+                    <a href="/faceswap">
+                        <i class='bx bx-photo-album icon'></i>
+                        <span class="text nav-text">사진 합성</span>
+                    </a>
+                </li>
 
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-id-card icon'></i>
-              <span class="text nav-text">이력서 평가 (예정)</span>
-            </a>
-          </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-id-card icon'></i>
+                        <span class="text nav-text">이력서 평가 (예정)</span>
+                    </a>
+                </li>
 
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-bar-chart-square icon'></i>
-              <span class="text nav-text">합격자 스펙 (예정)</span>
-            </a>
-          </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bar-chart-square icon'></i>
+                        <span class="text nav-text">합격자 스펙 (예정)</span>
+                    </a>
+                </li>
 
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-meh-blank icon'></i>
-              <span class="text nav-text">AI 면접 (예정)</span>
-            </a>
-          </li>
+                <li class="nav-link">
+                    <a href="/interview">
+                        <i class='bx bx-meh-blank icon'></i>
+                        <span class="text nav-text">AI 면접 (예정)</span>
+                    </a>
+                </li>
 
-        </ul>
-      </div>
+            </ul>
+        </div>
 
-      <div class="bottom-content">
-        <li class="">
-          <a href="#">
-            <i class='bx bx-log-out icon'></i>
-            <span class="text nav-text">로그인 없는 로그아웃</span>
-          </a>
-        </li>
+        <div class="bottom-content">
+            <li class="">
+                <a href="#">
+                    <i class='bx bx-log-out icon'></i>
+                    <span class="text nav-text">로그인 없는 로그아웃</span>
+                </a>
+            </li>
 
-        <li class="mode">
-          <div class="sun-moon">
-            <i class='bx bx-moon icon moon'></i>
-            <i class='bx bx-sun icon sun'></i>
-          </div>
-          <span class="mode-text text">다크 모드</span>
+            <li class="mode">
+                <div class="sun-moon">
+                    <i class='bx bx-moon icon moon'></i>
+                    <i class='bx bx-sun icon sun'></i>
+                </div>
+                <span class="mode-text text">다크 모드</span>
 
-          <div class="toggle-switch">
-            <span class="switch"></span>
-          </div>
-        </li>
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li>
 
-      </div>
+        </div>
     </div>
 
-  </nav>
+</nav>
 
-  <section class="home">
+<section class="home">
     <div class="text">
         <h1>사진 합성 결과!</h1>
         <img src="{{ url_for('results', filename=result_image) }}" alt="Face Swap Result" style="width: 400px;">
         <br>
         <a href="/faceswap">다시하기!</a>
     </div>
-  </section>
+</section>
 
-  <script>
+<script>
     const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      // searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
+        sidebar = body.querySelector('nav'),
+        toggle = body.querySelector(".toggle"),
+        // searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
     toggle.addEventListener("click", () => {
-      sidebar.classList.toggle("close");
+        sidebar.classList.toggle("close");
     })
     // searchBtn.addEventListener("click", () => {
     //   sidebar.classList.remove("close");
     // })
     modeSwitch.addEventListener("click", () => {
-      body.classList.toggle("dark");
-      if (body.classList.contains("dark")) {
-        modeText.innerText = "라이트 모드";
-      } else {
-        modeText.innerText = "다크 모드";
-      }
+        body.classList.toggle("dark");
+        if (body.classList.contains("dark")) {
+            modeText.innerText = "라이트 모드";
+        } else {
+            modeText.innerText = "다크 모드";
+        }
     });
-  </script>
+</script>
 
 </body>
 

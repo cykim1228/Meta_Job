@@ -107,9 +107,33 @@
 
 <section class="home">
     <div class="text">
-        <h2>홈 화면 이에용</h2>
-        <h6>뭘 넣으면 좋을지 생각해보아용</h6>
+        <h1>AI 면접</h1>
     </div>
+
+    <div class="videobox">
+
+        <!-- 면접관 영상들 -->
+        <div class="interviewer-videos">
+            <video class="interviewer-video" id="interviewerVideo1" controls>
+                <source src="{{ url_for('static', filename='videos/test_1.mp4') }}" type="video/mp4">
+            </video>
+            <video class="interviewer-video" id="interviewerVideo2" controls>
+                <source src="{{ url_for('static', filename='videos/zzan.mp4') }}" type="video/mp4">
+            </video>
+            <video class="interviewer-video" id="interviewerVideo3" controls>
+                <source src="{{ url_for('static', filename='videos/test_2.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- 웹캠 영상 -->
+        <div class="webcam-container">
+            <video id="webcamVideo" class="webcamVideo" autoplay></video>
+        </div>
+
+    </div>
+
+    <div class="transcription"></div>
+
 </section>
 
 <script>
@@ -133,6 +157,37 @@
             modeText.innerText = "다크 모드";
         }
     });
+
+    // 웹캠 접근
+    navigator.mediaDevices.getUserMedia({video: true})
+        .then(stream => {
+            const webcamVideo = document.getElementById('webcamVideo');
+            webcamVideo.srcObject = stream;
+        })
+        .catch(error => {
+            console.log("웹캠에 접근할 수 없습니다:", error);
+        });
+
+    navigator.mediaDevices.getUserMedia({audio: true})
+        .then(function (stream) {
+            // 스트림을 성공적으로 얻은 경우
+        })
+        .catch(function (err) {
+            // 오류가 발생한 경우
+        });
+
+    const recognition = new window.webkitSpeechRecognition(); // Chrome에서만 동작합니다.
+
+    recognition.lang = 'ko-KR'; // 인식할 언어 설정
+    recognition.interimResults = true; // 중간 결과를 반환할지 여부
+
+    recognition.onresult = function (event) {
+        const transcription = event.results[event.results.length - 1][0].transcript;
+        transcriptionElement.innerText = transcription;
+    }
+
+    recognition.start(); // 음성 인식 시작
+
 </script>
 
 </body>
