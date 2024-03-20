@@ -1,8 +1,7 @@
+
 # :office: META-JOB
 
 ### :bookmark: 구직 활동을 도와주는 인공지능 취업 도우미 서비스 '메타 잡'
-
-<br />
 
 ## :thought_balloon: 프로젝트 기획
 
@@ -90,8 +89,8 @@
 > 공용 서버 이용  
 #### LLM 이용 금액
 > 포트폴리오 1개 기준 3000 토큰 발생  
-> GPT 3.5 기준 Input 0.01$ / 1K , Output 0.03 / 1K  
-> GPT 4 기준 Input 0.03 / 1K , Output 0.06 / 1K  
+> GPT 3.5 기준 Input 0.01$ / 1K , Output 0.03$ / 1K  
+> GPT 4 기준 Input 0.03$ / 1K , Output 0.06$ / 1K  
 > GPT 4 사용 시 포트폴리오 검사 1회 당 약 400원 비용 발생  
 
 ## :books: 사용 기술
